@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Anime Recommendation</title>
+
+    <!-- add icon link -->
+    <link rel = "icon" href ="static/icon_2.jpg" type = "image/x-icon">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.0/dist/aos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+
+<style type="text/css">
+
+/*          FOR BASIC DESIGN        */
+
+html
+{
+  
+
+    
+}
+
+* {
+    font-family: Calibri;
+
+}
+    html {
+      scroll-behavior: smooth;
+
+    }
+
+
+
+
+
+
+    nav a span {
+        font-size: 25px;
+    }
+
+
+
+#search {
+    position: absolute;
+}
+
+#heading1 {
+    font-size: 6vw;
+}
+
+#heading4 {
+    font-size: 1.5vw;
+}
+
+
+
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*          FOR NAV STICKY AND DESIGN  not sticky here     */
+
+    nav {
+      
+      position: fixed;
+      top: 0;
+
+      height: 45px;
+      width: 100%;
+      background-color: #434346;
+      
+    }
+
+    
+
+
+
+    .nav-link{
+        font-size: 20px;
+        
+    }
+
+    .nav-item{
+        padding-right: 20px;
+    }
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+
+/*          FOR SCROLL BAR     */
+
+::-webkit-scrollbar{
+    width: 12px;
+    height: 0px; /*change to 0*/
+}
+
+
+
+::-webkit-scrollbar-track{
+    background-color: #434346;
+    
+}
+::-webkit-scrollbar-thumb{
+    background-color: #5B67C0;
+    border: 2.5px solid #434346;
+    
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #F06A59;
+}
+
+::-webkit-scrollbar-corner{
+    background-color: #4E6062 ;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+  
+
+/* MAKING EVERYTHING RESPONSIVE */
+
+/* for laptops and desktop  */
+@media only screen and (max-width: 700px) {
+
+nav {
+    width: 100%;
+    position: relative !important;
+    background-color: #434346;
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
+
+
+}
+
+nav a span{
+    font-size: 25px;
+    text-align: center;
+}
+
+nav #tabs {
+    display: none;
+}
+
+
+
+
+#heading1 {
+    font-size: 7vh;
+}
+
+#heading4 {
+    font-size: 3vh;
+}
+
+#section-1-div-2{
+left: 0; 
+top:50px; 
+position: absolute;
+}
+
+
+
+
+#image-1{
+    
+    left: 100vw;
+    margin-left: -340px;
+    top: 100vh;
+    margin-top: -230px;
+    
+    width: 300px;
+
+}
+
+
+#section-2-div-2{
+left: 0; 
+top:50px; 
+position: absolute;
+}
+
+#section-3-div-2{
+left: 50px; 
+top:50px; 
+position: absolute;
+}
+
+
+#section-3-div-3{
+left: 50px; 
+top: 250px; 
+position: absolute;
+}
+
+#dropdown-content{
+left: 55px; 
+top: 320px; 
+width: 50vw;
+height: 30vh;
+position: absolute;
+}
+
+.btn-search:focus ~ .input-search{
+
+    width: 50vw;
+
+}
+
+.input-search:focus{
+
+    width: 50vw;
+
+}
+
+#image-2{
+    
+    left: 100vw;
+    margin-left: -250px;
+    top: 100vh;
+    margin-top: -300px;
+    
+    width: 200px;
+
+}
+
+#image-3{
+    right: 100vw;
+    margin-right: -105px;
+    padding-left: 10px;
+    bottom: 0vh;
+    margin-bottom: -100px;
+    width: 100px;
+    position: absolute;
+}
+
+
+#image-4{
+    
+    left: 100vw;
+    margin-left: -230px;
+    top: 100vh;
+    margin-top: -251px;
+    
+    width: 200px;
+
+}
+
+
+#image-5{
+    right: 100vw;
+    margin-right: -120px;
+    
+    top: 100vh;
+    margin-top: -280px;
+
+    width: 100px;
+    position: absolute;
+    z-index: -1;
+}
+
+
+
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*          FOR LOADING             */
+
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #6A359C;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #Fff;
+  animation: loader 2s infinite ease;
+}
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+@keyframes loader {
+  0% { transform: rotate(0deg);}
+  25% { transform: rotate(180deg);}
+  50% { transform: rotate(180deg);}
+  75% { transform: rotate(360deg);}
+  100% { transform: rotate(360deg);}
+}
+@keyframes loader-inner {
+  0% { height: 0%;}
+  25% { height: 0%;}
+  50% { height: 100%;}
+  75% { height: 100%;}
+  100% { height: 0%;}
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+/*            FOR TABLE             */
+
+
+table{
+    border-collapse: collapse;
+    overflow:auto !important;
+    font-size: 0.9em;
+    
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+table thead tr {
+    background-color: #52297A;
+    color: #E7E0EF;
+    text-align: left !important;
+    border: 2px solid #6A359C;
+}
+
+
+table th,
+table td {
+    padding: 12px 20px;
+    border-radius: 5px;
+
+}
+
+table tbody tr {
+    border: 1px solid #6A359C;
+    color: #E7E0EF;
+
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: #7645A4;
+}
+
+table tbody tr:last-of-type {
+    border: 2px solid #6A359C;
+}
+
+table tbody tr:hover {
+    
+    background-color: #63368E;
+}
+
+
+#section-table{
+    
+    height: 100vh;
+    width: 100vw;
+    background:  #6A359C;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#incase{
+  
+    height: 100%;
+    width: 100%;
+    padding-bottom: 50px;
+    
+
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+</style>
+
+</head>
+
+
+<body>
+
+<div id="hide" style="z-index: 999;" class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span><br>
+    <span style="color: floralwhite; padding-left: 20px;">Loading...</span>
+</div>
+
+<script>
+window.onload = function() {
+  document.getElementById('hide').style.display = 'none';
+};
+</script>
+
+
+
+<!--                            NAVIGATION BAR                  -->
+            <nav id="nav" class="navbar  navbar-dark">
+                <a class="navbar-brand" href="/" style="margin-top: -10px;">
+                <img id="logo"  style=" margin-left: 14px; margin-right: 14px; float: left; " src="static/logo_3.png" width="34px" height="34px">
+                <span>Ani-Go: Recommender</span>
+                </a>
+
+                <div id="tabs" class="navbar-nav" style="margin-top: -10px;">
+
+                    <ul class="nav justify-content-end">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="/">Go Back</a>
+                      </li>
+                      
+                    </ul>
+                    
+                </div>
+            </nav>
+
+
+
+
+
+<div style="position: fixed; overflow: auto;">
+<section id="section-table">
+
+    <div id="incase" style="overflow: auto !important;">
+
+        {% for table in tables %}
+            {{ table|safe}}
+        {% endfor %}
+
+    </div>
+    
+</section>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- for zoom in and out transitions -->
+
+<script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
+
+<script>
+    AOS.init({
+      duration: 800,
+    })
+</script>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- for filtering search results -->
+
+<script>
+    
+
+
+    function filterFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("inputkey");
+      filter = input.value.toUpperCase();
+      div = document.getElementById("dropdown-content");
+      a = div.getElementsByTagName("button");
+      for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          a[i].style.display = "";
+        } else {
+          a[i].style.display = "none";
+        }
+      }
+    }
+
+
+    
+</script>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+</body>
+
+<!-- for changing color of nav when scrolling -->
+
+<script>
+    var navbar = document.querySelector('nav')
+
+    window.onscroll = function() {
+
+      // pageYOffset or scrollY
+      if (window.pageYOffset > 0) {
+        navbar.classList.add('scrolled')
+      } else {
+        navbar.classList.remove('scrolled')
+      }
+    }
+
+
+</script>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+</html>

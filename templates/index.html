@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+<head>
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Anime Recommendation</title>
+
+	<!-- add icon link -->
+    <link rel = "icon" href ="static/icon_2.jpg" type = "image/x-icon">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.0/dist/aos.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+
+	<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+
+<style type="text/css">
+
+/* 			FOR BASIC DESIGN 		*/
+
+html
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+
+    
+}
+
+* {
+	font-family: Calibri;
+
+}
+	html {
+	  scroll-behavior: smooth;
+
+	}
+
+
+/* dont ask y plz */
+#for_overflow{
+	overflow-x: hidden;
+	
+
+}
+
+#for_overflow::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+	nav a span {
+		font-size: 25px;
+	}
+
+.btn-search{
+	background: #F59B90;
+}
+
+#search {
+	position: absolute;
+}
+
+#heading1 {
+	font-size: 6vw;
+}
+
+#heading4 {
+	font-size: 1.5vw;
+}
+
+#section-1-div-2{
+
+	left: 0vw; 
+	top:8vh; 
+	position: relative;
+
+}
+
+#section-2-div-2{
+
+	left: 1vw; 
+
+	top:8vh;  
+	position: relative;
+}
+
+#section-3-div-2{
+
+	left: 14vw; 
+
+	top:8vh;  
+	position: relative;
+}
+
+#section-3-div-3 {
+	left: 14vw; 
+	top:8vh;
+	position: relative;
+}
+
+
+#section1{
+	color: floralwhite; 
+	position: relative;
+}
+
+#image-1{
+	
+	
+	
+	left: 100vw;
+	margin-left: -780px;
+	top: 100vh;
+	margin-top: -480px;
+	width: 700px;
+	position: absolute;
+}
+
+#image-2{
+	left: 100vw;
+	margin-left: -570px;
+	top: 100vh;
+	margin-top: -700px;
+	width: 500px;
+	position: absolute;
+}
+
+
+#image-3{
+	right: 100vw;
+	margin-right: -190px;
+	padding-left: 10px;
+	bottom: 0vh;
+	margin-bottom: 10px;
+	width: 200px;
+	position: absolute;
+	z-index: -1;
+}
+
+#image-4{
+	left: 100vw;
+	margin-left: -540px;
+	top: 100vh;
+	margin-top: -550px;
+	width: 500px;
+	position: absolute;
+}
+
+#image-5{
+	right: 100vw;
+	margin-right: -180px;
+	
+	top: 100vh;
+	margin-top: -393px;
+	width: 150px;
+	position: absolute;
+	z-index: -1;
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+
+/* 			FOR SECTION DESIGN 		*/
+
+	.fwh-slide {
+		height: 98vh;
+		max-height: 98vh;
+		background:  #6A359C;
+		box-sizing: border-box;
+		padding:  35px;
+	}
+
+	.fwh-slide--bg-yellow {
+		background:  #FCB052;
+		color:  white;
+
+	}
+
+
+	.fwh-slide--bg-red {
+		background:  #F06A59;
+		color:  white;
+	}
+
+	.fwh-slide p{
+		margin:  0;
+	}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*			FOR NAV STICKY AND DESIGN 		*/
+
+	nav {
+	  position: -webkit-sticky;
+	  position: sticky;
+	  /* sticky or fixed are fine */
+	  position: fixed;
+	  top: 0;
+
+	  height: 45px;
+	  width: 100%;
+	  background-color: #6A359C;
+	  /*background: linear-gradient(to bottom, #000, #0003 70%,#0000);*/ /* background when scroll is in the top */
+	  transition: background .3s; /* control how smooth the background changes */
+	}
+
+	nav.scrolled {
+	  background-color: #434346 ;
+
+	}
+
+
+
+	.nav-link{
+		font-size: 20px;
+		
+	}
+
+	.nav-item{
+		padding-right: 20px;
+	}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+
+/*  		FOR SCROLL BAR     */
+
+::-webkit-scrollbar{
+    width: 12px;
+    height: 10px; /*change to 0*/
+}
+
+
+
+::-webkit-scrollbar-track{
+    background-color: #434346;
+    
+}
+::-webkit-scrollbar-thumb{
+    background-color: #5B67C0;
+    border: 2.5px solid #434346;
+    
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #F06A59;
+}
+
+::-webkit-scrollbar-corner{
+	background-color: #4E6062 ;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	
+/*  		FOR SEARCH BAR         */
+
+.search-box{
+  left: 15.5%;
+  top: 300px;
+  position: absolute;
+}
+.input-search{
+  height: 50px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all .5s ease-in-out;
+  background-color: #F59B90;
+  padding-right: 40px;
+  color:#fff;
+}
+.input-search::placeholder{
+  color:rgba(255,255,255,.5);
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+.btn-search{
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color:#ffffff ;
+  background-color:transparent;
+  pointer-events: painted;  
+}
+.btn-search:focus ~ .input-search{
+  width: 500px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+.input-search:focus{
+  width: 500px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+#dropdown-content {
+	overflow:auto; 
+	position: relative;
+	
+	left: 14vw; 
+
+	top:8vh; 
+
+	
+	width: 40vw;
+	height: 30vh;
+	
+	
+
+	background-color: #D35D4E;
+	border-left: 2px solid #D35D4E;
+	border-bottom: 2px solid #D35D4E;
+	border-right: 2px solid #D35D4E;
+	border-radius: 1px;
+	box-shadow: inset 0px 2px 3px 0px rgba(0,0,0,0.4);
+}
+
+#dropdown-content button{
+
+	color: floralwhite;
+    padding: 10px 10px;
+    text-decoration: none;
+    border: none;
+    display: block;
+    background-color: transparent;
+    border-bottom: 1px solid #E19389;
+
+    width: 500px;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+
+/* MAKING EVERYTHING RESPONSIVE */
+
+/* for laptops and desktop  */
+@media only screen and (max-width: 700px) {
+
+nav {
+	width: 100%;
+	position: relative !important;
+	background-color: #434346;
+	box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
+
+
+}
+
+nav a span{
+	font-size: 25px;
+	text-align: center;
+}
+
+nav #tabs {
+	display: none;
+}
+
+
+
+
+#heading1 {
+	font-size: 7vh;
+}
+
+#heading4 {
+	font-size: 3vh;
+}
+
+#section-1-div-2{
+left: 0; 
+top:50px; 
+position: absolute;
+}
+
+
+
+
+#image-1{
+	
+	left: 100vw;
+	margin-left: -340px;
+	top: 100vh;
+	margin-top: -230px;
+	
+	width: 300px;
+
+}
+
+
+#section-2-div-2{
+left: 0; 
+top:50px; 
+position: absolute;
+}
+
+#section-3-div-2{
+left: 50px; 
+top:50px; 
+position: absolute;
+}
+
+
+#section-3-div-3{
+left: 50px; 
+top: 250px; 
+position: absolute;
+}
+
+#dropdown-content{
+left: 55px; 
+top: 320px; 
+width: 50vw;
+height: 30vh;
+position: absolute;
+}
+
+.btn-search:focus ~ .input-search{
+
+	width: 50vw;
+
+}
+
+.input-search:focus{
+
+	width: 50vw;
+
+}
+
+#image-2{
+	
+	left: 100vw;
+	margin-left: -250px;
+	top: 100vh;
+	margin-top: -300px;
+	
+	width: 200px;
+
+}
+
+#image-3{
+	right: 100vw;
+	margin-right: -105px;
+	padding-left: 10px;
+	bottom: 0vh;
+	margin-bottom: -100px;
+	width: 100px;
+	position: absolute;
+}
+
+
+#image-4{
+	
+	left: 100vw;
+	margin-left: -230px;
+	top: 100vh;
+	margin-top: -251px;
+	
+	width: 200px;
+
+}
+
+
+#image-5{
+	right: 100vw;
+	margin-right: -120px;
+	
+	top: 100vh;
+	margin-top: -280px;
+
+	width: 100px;
+	position: absolute;
+	z-index: -1;
+}
+
+
+
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #6A359C;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #Fff;
+  animation: loader 2s infinite ease;
+}
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+@keyframes loader {
+  0% { transform: rotate(0deg);}
+  25% { transform: rotate(180deg);}
+  50% { transform: rotate(180deg);}
+  75% { transform: rotate(360deg);}
+  100% { transform: rotate(360deg);}
+}
+@keyframes loader-inner {
+  0% { height: 0%;}
+  25% { height: 0%;}
+  50% { height: 100%;}
+  75% { height: 100%;}
+  100% { height: 0%;}
+}
+</style>
+
+</head>
+
+
+<body>
+
+<div id="hide" style="z-index: 999;" class="loader-wrapper">
+	<span class="loader"><span class="loader-inner"></span></span><br>
+	<span style="color: floralwhite; padding-left: 20px;">Loading...</span>
+</div>
+
+<script>
+window.onload = function() {
+  document.getElementById('hide').style.display = 'none';
+};
+</script>
+
+
+<!-- 													The Basic Idea
+We want small navigation bar, which will have the site name, and links to the sections in full page layout site, im guessing about 4 sections, including the footer, ie. intro (which will have small description of the site and a link to search along with an image of anime i guess), next we will have how it works and what it does section, and then we will have the search function next, along with the recommendation results section which should appear after the user searches for the anime, lastly we will have footer section which will thank em for using and my links to social media.
+-->
+
+<!-- 													 Some details
+The intro section will have some colour in the back, prefer purple and black and white like twitch, and the how it works section will have particle.js effects in that section only. then we will have search section with some colour as background like the intro section (maybe circle particle effect if u wanna)
+-->
+
+<!-- colours:  2E5367          2c2e43    7B54B7	5B67C0	style="background-color: #664598;"	-->
+
+<!-- 							NAVIGATION BAR 					-->
+			<nav id="nav" class="navbar sticky-top navbar-dark">
+				<a class="navbar-brand" href="#" style="margin-top: -10px;">
+				<img id="logo"  style=" margin-left: 14px; margin-right: 14px; float: left; " src="static/logo_3.png" width="34px" height="34px">
+				<span>Ani-Go: Recommender</span>
+				</a>
+
+				<div id="tabs" class="navbar-nav" style="margin-top: -10px;">
+
+					<ul class="nav justify-content-end">
+					  <li class="nav-item">
+					    <a class="nav-link active" href="#top">Intro</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" href="#section2">How it works</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" href="#section3">Search</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" href="#contact-me">Contact Me</a>
+					  </li>
+					</ul>
+					
+				</div>
+			</nav>
+
+
+
+<div id="for_overflow">
+ 
+
+<!-- 					SECTION-1 				data-aos="zoom-out"		-->
+
+		<section id="section1" class="fwh-slide" >
+
+			<div  id="section-1-div-1" data-aos="zoom-out">
+
+				<img id="image-1" src="static/anime2.png"  >
+
+				<div  id="section-1-div-2" class="container">
+
+					<h1 id="heading1" >Anime <br> Recommender</h1>
+					<h4 id="heading4">Looking for Anime to watch? and cant find anything suitable? <br> Tell us your Favourite Anime and we will recommend you some!</h4>
+					<a  href="#section3" style="text-decoration: none; color: white;"><h4 id="heading4"><u>Go to Search</u></h4></a>
+				</div>
+					
+				
+			</div>		
+			
+
+		</section>
+
+
+<!-- 					SECTION-2 				data-aos="zoom-out"		-->
+
+		<section id="section2" class="fwh-slide fwh-slide--bg-yellow" style="position: relative;" >
+			
+			<div id="section-2-div-1" data-aos="fade-right">
+
+				<img id="image-2" src="static/anime5.png"  >
+
+				<div id="section-2-div-2" class="container">
+
+					<h1 id="heading1" >How does it Work?</h1>
+					<h4 id="heading4">Just Search the name of the Anime you like, and our recommendation engine will<br> give you animes similar to it!<br><br>We match what you like, with 10000s of MAL users, and based on that we present the results!</h4>
+					<a href="#section3" style="text-decoration: none; color: white;"><h4 id="heading4"><u>Go to Search</u></h4></a>
+				</div>
+					
+				<img id="image-3" src="static/anime6.png" >
+			</div>	
+
+
+
+		</section>
+
+
+
+<!-- 					SECTION-3 				data-aos="zoom-out"		-->
+
+
+		<section id="section3" class="fwh-slide fwh-slide--bg-red" style="position: relative;" >
+
+
+			<div id="section-3-div-1" data-aos="fade-down">
+
+				<img id="image-4" src="static/anime7.png" >
+
+				<div id="section-3-div-2" >
+
+					<h1 id="heading1">Search!</h1>
+					<h4 id="heading4">Enter the anime name and select any result from the dropdown</h4>
+					
+					
+				</div>
+				
+				<img id="image-5" src="static/anime8.png">
+
+				<br>
+				<div id="section-3-div-3"  class="search-box " id="toggle">
+
+				 	<div id="search" >
+
+					 	<button class="btn-search"  ><i class="fas fa-search"></i></button>
+					    <input type="text" class="input-search" placeholder="Type to Search..." id="inputkey" onkeyup="filterFunction()"   >
+				  
+				  </div>
+				    
+				 </div>
+				 <br>
+				 <br>
+				 <br>
+				 
+				 <div id="dropdown-content">
+					    
+				 	{% for names in anime_names %}
+				 		<form action="/result" method="POST">
+				 			<button style="text-align: left !important;">{{names}}</button>
+				 			<input type="text" style="display: none;" name="name" value="{{names}}">
+				 		</form>
+				 		
+				 	{% endfor %}
+
+<!-- good now make the span a button which becomes an input for the algo -->
+
+
+
+
+				
+				</div>
+			</div>
+
+					
+			
+		</section >
+
+
+		<footer id="contact-me" style="background-color: #434346;  ">
+			<div style="display: flex; justify-content: center; padding-top: 10px;">
+
+					<a href="https://github.com/Aryan7Mohan" target="_blank" style="padding-right: 10px;"><i class="fab fa-github"></i></a>
+					<a href="https://www.linkedin.com/in/aryan-mohan/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+					
+					
+			</div>
+			<div style="display: flex; justify-content: center; padding-top: 10px; color: floralwhite; font-size: 15px; padding-bottom: 10px;">
+
+					Email: aryan.mohan7@gmail.com
+					
+					
+			</div>
+		</footer>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- for zoom in and out transitions -->
+
+<script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
+
+<script>
+	AOS.init({
+	  duration: 800,
+	})
+</script>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- for filtering search results -->
+
+<script>
+	
+
+
+	function filterFunction() {
+	  var input, filter, ul, li, a, i;
+	  input = document.getElementById("inputkey");
+	  filter = input.value.toUpperCase();
+	  div = document.getElementById("dropdown-content");
+	  a = div.getElementsByTagName("button");
+	  for (i = 0; i < a.length; i++) {
+	    txtValue = a[i].textContent || a[i].innerText;
+	    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	      a[i].style.display = "";
+	    } else {
+	      a[i].style.display = "none";
+	    }
+	  }
+	}
+
+
+	
+</script>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+</body>
+
+<!-- for changing color of nav when scrolling -->
+
+<script>
+	var navbar = document.querySelector('nav')
+
+	window.onscroll = function() {
+
+	  // pageYOffset or scrollY
+	  if (window.pageYOffset > 0) {
+	    navbar.classList.add('scrolled')
+	  } else {
+	    navbar.classList.remove('scrolled')
+	  }
+	}
+
+
+</script>
+
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+</html>
