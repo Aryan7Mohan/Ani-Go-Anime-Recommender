@@ -2,7 +2,7 @@
 
 Ani-Go is a responsive website where users can input their favourite anime and get recommendations based on ratings of over 70k+ MAL Users.
 
-
+model not included due to large size, model link: https://drive.google.com/drive/folders/1WJ0ydJrysuAEvgOD9L-Pi3d2ixITPQtm?usp=sharing
 # Screenshots
 
 ![image](https://user-images.githubusercontent.com/53483511/141741871-51debca7-a735-4989-a67e-afa64d5a0238.png)
