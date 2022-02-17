@@ -551,16 +551,7 @@ position: absolute;
 
 <body>
 
-<div id="hide" style="z-index: 999;" class="loader-wrapper">
-	<span class="loader"><span class="loader-inner"></span></span><br>
-	<span style="color: floralwhite; padding-left: 20px;">Loading...</span>
-</div>
 
-<script>
-window.onload = function() {
-  document.getElementById('hide').style.display = 'none';
-};
-</script>
 
 
 <!-- 													The Basic Idea
@@ -689,11 +680,13 @@ The intro section will have some colour in the back, prefer purple and black and
 				 <div id="dropdown-content">
 					    
 				 	{% for names in anime_names %}
+
+
 				 		<form action="/result" method="POST">
 				 			<button style="text-align: left !important;">{{names}}</button>
 				 			<input type="text" style="display: none;" name="name" value="{{names}}">
 				 		</form>
-				 		
+
 				 	{% endfor %}
 
 <!-- good now make the span a button which becomes an input for the algo -->
