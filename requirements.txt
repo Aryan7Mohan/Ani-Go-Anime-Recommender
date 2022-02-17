@@ -3,6 +3,6 @@ gunicorn==20.1.0
 imutils==0.5.4
 joblib==1.1.0
 keras==2.6.0
-numpy==1.19.5
+numpy==1.21.0
 pandas==1.4.0
 scikit-learn==1.0
